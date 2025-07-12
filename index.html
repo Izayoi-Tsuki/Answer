@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#7877c6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Book of Answers">
+    <title>Book of Answers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">📖 Book of Answers</h1>
+            <p class="app-subtitle">Think of your question and receive mystical wisdom</p>
+            <button id="music-toggle" class="music-toggle" title="Toggle Background Music">
+                🎵
+            </button>
+        </header>
+
+        <main class="main-content">
+            <div class="question-section">
+                <div class="mystic-circle">
+                    <div class="inner-circle">
+                        <span class="mystic-symbol">🔮</span>
+                    </div>
+                </div>
+                <p class="mystic-instruction">Think of your question and tap the crystal ball</p>
+            </div>
+
+            <div class="answer-section" id="answer-section" style="display: none;">
+                <div class="answer-card">
+                    <div class="answer-header">
+                        <span class="answer-icon">✨</span>
+                        <h2 class="answer-title">The Answer</h2>
+                    </div>
+                    <div class="answer-content" id="answer-content">
+                        <!-- Answer will be displayed here -->
+                    </div>
+                    <button id="new-question-button" class="new-question-button">
+                        Ask Another Question
+                    </button>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3 class="history-title">Recent Questions</h3>
+                <div class="history-list" id="history-list">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Book of Answers. All answers are for entertainment purposes only.</p>
+        </footer>
+        
+        <!-- Audio elements for sound effects -->
+        <audio id="mystic-bg-music" loop>
+            <source src="https://www.soundjay.com/misc/sounds/wind-chimes-2.wav" type="audio/wav">
+        </audio>
+        <audio id="crystal-sound">
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        </audio>
+        <audio id="reveal-sound">
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-03.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 
